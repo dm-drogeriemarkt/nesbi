@@ -19,7 +19,7 @@ __author__ = "Simon Metzger"
 __author_email__ = "simon.metzger@dm.de"
 __license__ = "MIT License"
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 setup(name="nesbi",
       version=__version__,

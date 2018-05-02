@@ -15,15 +15,17 @@ install_reqs = parse_requirements('requirements.txt', session=uuid.uuid1())
 reqs = [str(ir.req) for ir in install_reqs]
 
 
-__author__ = "simon.metzger@dm.de"
+__author__ = "Simon Metzger"
+__author_email__ = "simon.metzger@dm.de"
 __license__ = "MIT License"
 
-__version__ = "1.0.0"
+__version__ = "1.0.2"
 
 setup(name="nesbi",
       version=__version__,
-      description="import with nesbi",
+      description="Nesbi (Network Scan, Build and Import data)",
       author=__author__,
+      author_email=__author_email__,
       url='https://github.com/dm-drogeriemarkt/nesbi',
       include_package_data=True,
       install_requires=reqs,

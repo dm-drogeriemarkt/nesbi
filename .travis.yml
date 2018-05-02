@@ -1,11 +1,16 @@
 sudo: required
-
 language: python
 python:
-    - 3.6
-
+- 3.6
 install:
-    - pip install tox-travis
-
+- pip install tox-travis
 script:
-    - tox
+- tox
+deploy:
+  provider: pypi
+  user: smnmtzgr
+  password:
+    secure: "VOJnzZQbFGgPS/ycyhh2WvPSjYh6TWEeQAt81iXn2cKZFD8MH607LeBpzV+qSm2UnPSUwE2CuLsTb63dZfYYVV/9AdruS98pr2LC/SruYsCCGqgyAUucBZcOiGLYUtJ+7d+vuSy/DQUHELlAxdBaUEiizYVFkKdgh+zqLeu96JazNHLIpD/frdxVyuAKhcPTjQ8nlCfy7Aveekk53CBqmiaW6CwUIS61c/njGObhx8FfEoUWoISrhoK+jl0jbenXjcCGCjdsd8pgEMTHOn9w63+aoorfY/sLvLWDflbXke2zNeeGESOLiezoO8qS708lyLVM/4OE69Pq6U/z/MgwmA3XjXIkF2iVTmyBHs4eAAaia9OKR12dPgAv28DwBqdEG+qTLWtxQOKAtfoSBiFwp/MPWyb+FvSICOu0qJh+OWUsLsSjTu0JT9t0EpYE9bzOdo5Y4SDLFnJAQVEH3smUUBEsk5qNQM0RBgdincb7ruv01W4oA0VmErJjq2CHfsicENQV/vYQkoZjwp3grp9RN1/ebKb/nfJ3mr01Sl7PaK/Dp0IsViKKi/o9HcE3YPer9Lp2sgHLZWppFyplfquL4mnXr+jPxnQNknfj9qRlYGFDTHOVHyWyctVTpfoX5/h40gdv+OGZlO8mUqzITvALHfFleiYnO2geELO13PvC704="
+  on:
+    tags: true
+    branch: master

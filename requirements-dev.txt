@@ -1,0 +1,5 @@
+tox
+pytest
+pylama
+flake8-import-order
+-r requirements.txt

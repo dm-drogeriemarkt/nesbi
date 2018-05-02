@@ -1,0 +1,43 @@
+---
+
+networks:
+  mylocation:
+    range: 192.168.0.0/25
+    exclude: ['192.168.0.32', '192.168.0.126']
+    attributes:
+      monitoring_status: ACTIVE
+      owner_team: Network-Team
+      maintenance_status: INACTIVE
+  mylocation2:
+    range: 192.168.0.1/25
+    attributes:
+      owner_person: myself
+      maintenance_status: INACTIVE
+
+types:
+  # CISCO
+  WS-C3560V2-24PS: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.05.2021 }
+  WS-C2960-8TC-L: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.07.2018 }
+  WS-C3560-24PS: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.07.2015 }
+  WS-C3560-48PS: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.07.2015 }
+  WS-C3560V2-24TS: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.05.2021 }
+  WS-C3560V2-48PS: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.05.2021 }
+  WS-C2960-24TT-L: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.08.2019 }
+  WS-C2960-48TT-L: { device_art: Switch, device_typ: Switch-Access, monitoring_template: TPL-HOST-IP4-Switch, last_day_of_support: 31.08.2019 }
+
+attr_functions:
+  monitoring_interfaces: get_monitoring_interfaces
+
+napalm:
+  serial: serial_number
+  label: hostname
+  description: model
+  product_number: model
+
+nsot_url: http://nsot.local/api
+nsot_email: nsotuser@example.com
+nsot_secret_key: 12345
+nsot_site_id: '1'
+nsot_update_objects: False
+
+nesbi_snmp_community: mycomm

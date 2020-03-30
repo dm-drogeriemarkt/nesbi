@@ -19,7 +19,7 @@ __author__ = "Simon Metzger"
 __author_email__ = "simon.metzger@dm.de"
 __license__ = "MIT License"
 
-__version__ = "1.0.3"
+__version__ = "1.0.4"
 
 setup(name="nesbi",
       version=__version__,
@@ -37,5 +37,6 @@ setup(name="nesbi",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3 :: Only",
                    "Programming Language :: Python :: 3.6",
+                   "Programming Language :: Python :: 3.7",
                    "License :: OSI Approved :: MIT License"
                    ])

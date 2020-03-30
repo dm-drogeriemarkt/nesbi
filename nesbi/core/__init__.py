@@ -17,7 +17,7 @@ class Nesbi(object):
         scanner = NetworkScanner(self.config.networks, self.config.nesbi_username,
                                  self.config.nesbi_password, self.config.nesbi_snmp_version,
                                  self.config.nesbi_snmp_community, self.config.nesbi_scan_ports,
-                                 self.config.nesbi_thread_limit)
+                                 self.config.nesbi_thread_limit, self.config.nesbi_network_driver)
 
         self.scan_data = scanner.devices
 

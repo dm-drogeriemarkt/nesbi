@@ -5,6 +5,7 @@ import yaml
 ATTRIBUTES = [('nesbi_username', ''),
               ('nesbi_password', ''),
               ('nesbi_dry_run', False),
+              ('nesbi_network_driver', ''),
               ('nsot_url', ''),
               ('nsot_email', ''),
               ('nsot_secret_key', ''),
@@ -26,7 +27,7 @@ class Config:
             data = yaml.load(f.read()) or {}
 
         for k, v in data.items():
-                setattr(self, k, v)
+            setattr(self, k, v)
 
         for attr in ATTRIBUTES:
             self._set_self_attribute(attr[0], attr[1], **kwargs)

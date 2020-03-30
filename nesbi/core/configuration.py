@@ -24,7 +24,7 @@ ATTRIBUTES = [('nesbi_username', ''),
 class Config:
     def __init__(self, config_file, **kwargs):
         with open(config_file, 'r') as f:
-            data = yaml.load(f.read()) or {}
+            data = yaml.safe_load(f.read()) or {}
 
         for k, v in data.items():
             setattr(self, k, v)

@@ -147,10 +147,10 @@ class NetworkScanner(object):
                         q.put(final_merge)
                         self.logger.info(f"{facts.get('hostname')} scanned with napalm")
 
-                except NetMikoAuthenticationException as e:
+                except NetMikoAuthenticationException:
                     self.logger.error(f"{facts.get('hostname') or ip}: auth failed")
 
-                except NetMikoTimeoutException as e:
+                except NetMikoTimeoutException:
                     self.logger.error(f"{facts.get('hostname') or ip}: socket-timeout")
 
                 except napalm.base.exceptions.ConnectionClosedException as e:

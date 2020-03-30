@@ -34,26 +34,26 @@ class Nesbi(object):
                 try:
                     for k, v in self.config.napalm.items():
                         import_data['attributes'][k] = device.get(v)
-                except AttributeError as e:
+                except AttributeError:
                     pass
 
                 try:
                     for k, v in self.config.types.get(device.get('model')).items():
                         import_data['attributes'][k] = v
-                except AttributeError as e:
+                except AttributeError:
                     pass
 
                 try:
                     for k, v in self.config.attr_functions.items():
                         func = next(x for x in self.attr_functions if x.__name__ == v)
                         import_data['attributes'][k] = func(device)
-                except AttributeError as e:
+                except AttributeError:
                     pass
 
                 try:
                     for k, v in self.config.networks.get(location).get('attributes').items():
                         import_data['attributes'][k] = v
-                except AttributeError as e:
+                except AttributeError:
                     pass
 
                 self.import_data.append(import_data)

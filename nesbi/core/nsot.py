@@ -53,14 +53,21 @@ class NSOTCmdb(object):
 
     def _delete_data(self, d):
         h = d.get("hostname")
-        response = requests.delete(f'{self.nsot_url}/sites/{self.nsot_site_id}/devices/{h}/',
-                                   data=json.dumps(d), headers=self.headers, verify=False)
+        response = requests.get(f'{self.nsot_url}/devices/{h}/',
+                                   headers=self.headers, verify=False)
 
         status_code = response.status_code
+        if status_code == 200:
+            response = requests.delete(f'{self.nsot_url}/sites/{self.nsot_site_id}/devices/{h}/',
+                                    data=json.dumps(d), headers=self.headers, verify=False)
 
-        if status_code == 204:
-            self.logger.info(f"{d.get('hostname')} deleted")
-        elif status_code == 400:
-            self.logger.warning(f"{d.get('hostname')} wrong attributes")
+            status_code = response.status_code
+
+            if status_code == 204:
+                self.logger.info(f"{d.get('hostname')} deleted")
+            elif status_code == 400:
+                self.logger.warning(f"{d.get('hostname')} wrong attributes")
+            else:
+                self.logger.error(f"{d.get('hostname')} with problems, status-code: {status_code}")
         else:
-            self.logger.error(f"{d.get('hostname')} with problems, status-code: {status_code}")
+            self.logger.info(f"{d.get('hostname')} not deleted (error or not existent)")

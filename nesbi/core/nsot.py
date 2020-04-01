@@ -54,12 +54,12 @@ class NSOTCmdb(object):
     def _delete_data(self, d):
         h = d.get("hostname")
         response = requests.get(f'{self.nsot_url}/devices/{h}/',
-                                   headers=self.headers, verify=False)
+                                headers=self.headers, verify=False)
 
         status_code = response.status_code
         if status_code == 200:
             response = requests.delete(f'{self.nsot_url}/sites/{self.nsot_site_id}/devices/{h}/',
-                                    data=json.dumps(d), headers=self.headers, verify=False)
+                                       data=json.dumps(d), headers=self.headers, verify=False)
 
             status_code = response.status_code
 

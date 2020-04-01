@@ -18,7 +18,7 @@ from netmiko.ssh_exception import NetMikoAuthenticationException, NetMikoTimeout
 
 class NetworkScanner(object):
     def __init__(self, networks, username, password, snmp_version, snmp_community,
-                 scan_ports, thread_limit):
+                 scan_ports, thread_limit, network_driver):
         self.logger = logging.getLogger(__name__)
         self.networks = networks
         self.username = username
@@ -27,6 +27,7 @@ class NetworkScanner(object):
         self.snmp_community = snmp_community
         self.scan_ports = scan_ports
         self.thread_limit = thread_limit
+        self.network_driver = network_driver
         self.devices = self._get_network_devices()
 
     def _get_hosts_in_network(self):
@@ -88,7 +89,7 @@ class NetworkScanner(object):
                         q.put(ip)
                         already_reachable = True
 
-                except socket.error as e:
+                except socket.error:
                     self.logger.debug(f'{ip} not reachable at tcp-port {tcp_port}')
                     pass
 
@@ -146,10 +147,10 @@ class NetworkScanner(object):
                         q.put(final_merge)
                         self.logger.info(f"{facts.get('hostname')} scanned with napalm")
 
-                except NetMikoAuthenticationException as e:
+                except NetMikoAuthenticationException:
                     self.logger.error(f"{facts.get('hostname') or ip}: auth failed")
 
-                except NetMikoTimeoutException as e:
+                except NetMikoTimeoutException:
                     self.logger.error(f"{facts.get('hostname') or ip}: socket-timeout")
 
                 except napalm.base.exceptions.ConnectionClosedException as e:
@@ -165,8 +166,12 @@ class NetworkScanner(object):
         try:
             hostinfo.get_version()
             self.logger.info(f'{ip}: detected os "{hostinfo.os}"')
-        except SnmpError as e:
+        except SnmpError:
             self.logger.error(f'{ip}: snmp-timeout')
             return False
+
+        if self.network_driver != '':
+            self.logger.info(f'{ip}: custom configs overwrites os to: "{self.network_driver}"')
+            return self.network_driver
 
         return hostinfo.os

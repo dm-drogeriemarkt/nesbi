@@ -66,6 +66,7 @@ nsot_secret_key | yes/no | *not defined* | required when using nsot_secret_key a
 nsot_auth_header | yes/no | X-NSoT-Email | required when using auth_header as nsot auth method
 nsot_site_id | no | 1 | /
 nsot_delete_objects | no | False | if set to True existing nsot-objects will be deleted before adding them
+nesbi_network_driver | no | *not defined* | overwrites the network driver detected by nelsnmp
 nesbi_username | yes | *not defined* | username for napalm
 nesbi_password | yes | *not defined* | password for napalm
 nesbi_snmp_version | yes | 2c | only v2c is supported at the moment

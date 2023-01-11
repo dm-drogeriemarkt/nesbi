@@ -1,25 +1,16 @@
 #!/usr/bin/env python
-import uuid
+from setuptools import find_packages, setup
 
-try:
-    from setuptools import find_packages, setup
-except ImportError:
-    from distutils.core import setup
 
-try:  # for pip >= 10
-    from pip._internal.req import parse_requirements
-except ImportError:  # for pip <= 9.0.3
-    from pip.req import parse_requirements
-
-install_reqs = parse_requirements('requirements.txt', session=uuid.uuid1())
-reqs = [str(ir.req) for ir in install_reqs]
+with open("requirements.txt", "r") as fs:
+    reqs = [r for r in fs.read().splitlines() if (len(r) > 0 and not r.startswith("#"))]
 
 
 __author__ = "Simon Metzger"
 __author_email__ = "simon.metzger@dm.de"
 __license__ = "MIT License"
 
-__version__ = "1.0.4"
+__version__ = "1.0.5"
 
 setup(name="nesbi",
       version=__version__,
@@ -36,7 +27,9 @@ setup(name="nesbi",
       classifiers=["Development Status :: 4 - Beta",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3 :: Only",
-                   "Programming Language :: Python :: 3.6",
                    "Programming Language :: Python :: 3.7",
+                   "Programming Language :: Python :: 3.8",
+                   "Programming Language :: Python :: 3.9",
+                   "Programming Language :: Python :: 3.10",
                    "License :: OSI Approved :: MIT License"
                    ])

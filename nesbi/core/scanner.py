@@ -13,7 +13,7 @@ from nelsnmp.snmp import SnmpHandler
 
 from nesbi.core.helpers import deepupdate
 
-from netmiko.ssh_exception import NetMikoAuthenticationException, NetMikoTimeoutException
+from netmiko.exceptions import NetMikoAuthenticationException, NetMikoTimeoutException
 
 
 class NetworkScanner(object):

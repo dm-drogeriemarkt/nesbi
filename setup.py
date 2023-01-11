@@ -2,6 +2,10 @@
 from setuptools import find_packages, setup
 
 
+with open("requirements.txt", "r") as fs:
+    reqs = [r for r in fs.read().splitlines() if (len(r) > 0 and not r.startswith("#"))]
+
+
 __author__ = "Simon Metzger"
 __author_email__ = "simon.metzger@dm.de"
 __license__ = "MIT License"
@@ -15,6 +19,7 @@ setup(name="nesbi",
       author_email=__author_email__,
       url='https://github.com/dm-drogeriemarkt/nesbi',
       include_package_data=True,
+      install_requires=reqs,
       packages=find_packages(exclude=("test*", )),
       license=__license__,
       test_suite="tests",
@@ -22,7 +27,9 @@ setup(name="nesbi",
       classifiers=["Development Status :: 4 - Beta",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3 :: Only",
+                   "Programming Language :: Python :: 3.7",
                    "Programming Language :: Python :: 3.8",
                    "Programming Language :: Python :: 3.9",
+                   "Programming Language :: Python :: 3.10",
                    "License :: OSI Approved :: MIT License"
                    ])

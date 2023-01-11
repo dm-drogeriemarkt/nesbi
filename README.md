@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dm-drogeriemarkt/nesbi.svg?branch=master)](https://travis-ci.org/dm-drogeriemarkt/nesbi)
+![example branch parameter](https://github.com/dm-drogeriemarkt/nesbi/workflows/main.yml/badge.svg?branch=master)
 
 nesbi
 =======

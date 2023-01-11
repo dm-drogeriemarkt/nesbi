@@ -5,6 +5,9 @@ from setuptools import find_packages, setup
 with open("requirements.txt", "r") as fs:
     reqs = [r for r in fs.read().splitlines() if (len(r) > 0 and not r.startswith("#"))]
 
+with open("README.md", "r") as fs:
+    long_description = fs.read()
+
 
 __author__ = "Simon Metzger"
 __author_email__ = "simon.metzger@dm.de"
@@ -22,6 +25,8 @@ setup(name="nesbi",
       install_requires=reqs,
       packages=find_packages(exclude=("test*", )),
       license=__license__,
+      long_description=long_description,
+      long_description_content_type="text/markdown",
       test_suite="tests",
       platforms="any",
       classifiers=["Development Status :: 4 - Beta",

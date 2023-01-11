@@ -1,4 +1,5 @@
-![example branch parameter](https://github.com/dm-drogeriemarkt/nesbi/workflows/main.yml/badge.svg?branch=master)
+![python testing](https://github.com/dm-drogeriemarkt/nesbi/actions/workflows/tox.yml/badge.svg)
+![python publish](https://github.com/dm-drogeriemarkt/nesbi/actions/workflows/python-publish.yml/badge.svg)
 
 nesbi
 =======

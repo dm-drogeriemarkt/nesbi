@@ -42,8 +42,8 @@ Configuring nesbi
 The very first step is defining the config file. The file contains of different parts.
 
 ##### cmdb-attributes
-attribute-name | purpose 
---------------- | --------------- 
+attribute-name | purpose
+--------------- | ---------------
 networks | *contains name, range and static key/value pairs which should be added to cmdb*
 types | *map device-model dependent variables to cmdb attributes. Given model-name has to match the model-fact which gets read out by napalm.*
 attr_functions | *map return-values of functions to cmdb attributes*
@@ -58,7 +58,7 @@ It is possible to scan a single IP when defining the network-range with a **/32*
 Application-attributes can be given in the config file, as environment-variables (UPPER-CASE) or as function-arguments when calling nesbi(). Only attributes which have no default value and are required for nesbi to work correctly are marked as required.
 **The variables get overwritten in the following order: Nesbi() > config > ENV > default**.
 
-attribute-name | required | default | description 
+attribute-name | required | default | description
 -------------- | --------------- | --------------- | ---------------
 nsot_url | yes | *not defined* | /
 nsot_email | yes/no | *not defined* | required when using nsot_secret_key as nsot auth method
@@ -117,7 +117,7 @@ Fork and send a Pull Request. Thanks!
 
 License
 =======
-Copyright (c) 2020 dm-drogerie markt GmbH & Co. KG, https://dm.de
+Copyright (c) 2022 dm-drogerie markt GmbH & Co. KG, https://dm.de
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
